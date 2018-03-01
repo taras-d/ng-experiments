@@ -8,6 +8,7 @@ export interface APIRequestOptions {
     headers?: {[key: string]: any};
     tokenize?: boolean;
     responseType?: 'arraybuffer' | 'blob' | 'json' | 'text';
+    cacheable?: number;
 }
 
 @Injectable()
@@ -19,6 +20,10 @@ export class APIService {
         tokenize: true,
         responseType: 'json'
     };
+
+    private cache: {
+        [key: string]: { expire: Date | boolean, data: any }
+    } = {};
 
     constructor(private http: HttpClient) {
         
@@ -50,9 +55,18 @@ export class APIService {
         data: string, 
         options: APIRequestOptions
     ): Observable<any> {
+        method = method.toUpperCase();
+
         options = Object.assign({}, APIService.defaults, options);
 
         const url = this.getUrl(path);
+
+        if (method === 'GET' && options.cacheable) {
+            const data = this.getFromCache(url, options);
+            if (data !== undefined) {
+                return Observable.of(data);
+            }
+        }
 
         const headers = this.getHeaders(options);
 
@@ -64,7 +78,12 @@ export class APIService {
 
         return this.http.request(req)
             .filter(res => res instanceof HttpResponse)
-            .map((res: any) => res.body);
+            .map(res => res['body'])
+            .do(res => {
+                if (options.cacheable) {
+                    this.saveToCache(url, options, res);
+                }
+            });
     }
 
     private getUrl(path: string): string {
@@ -86,6 +105,18 @@ export class APIService {
 
     private getAuthToken(): string {
         return 'FAKE_TOKEN';
+    }
+
+    private getFromCache(url: string, options: APIRequestOptions): any {
+        const inCache = this.cache[url];
+        return (inCache && inCache.expire > new Date())?
+            inCache.data: undefined;
+    }
+
+    private saveToCache(url: string, options: APIRequestOptions, data: any): void {
+        const expire = new Date();
+        expire.setMinutes( expire.getMinutes() + options.cacheable );
+        this.cache[url] = { expire, data };
     }
 
 }
