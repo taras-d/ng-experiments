@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest, HttpResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -8,6 +8,7 @@ export interface APIRequestOptions {
     headers?: {[key: string]: any};
     tokenize?: boolean;
     responseType?: 'arraybuffer' | 'blob' | 'json' | 'text';
+    observe?: 'body' | 'response' | 'events';
     cacheable?: number;
 }
 
@@ -18,7 +19,8 @@ export class APIService {
 
     static readonly defaults = {
         tokenize: true,
-        responseType: 'json'
+        responseType: 'json',
+        observe: 'body'
     };
 
     private cache: {
@@ -33,26 +35,26 @@ export class APIService {
         return this.request('GET', path, null, options);
     }
 
-    post(path: string, data?: any, options?: APIRequestOptions): Observable<any> {
-        return this.request('POST', path, data, options);
+    post(path: string, body?: any, options?: APIRequestOptions): Observable<any> {
+        return this.request('POST', path, body, options);
     }
 
-    put(path: string, data?: any, options?: APIRequestOptions): Observable<any> {
-        return this.request('PUT', path, data, options);
+    put(path: string, body?: any, options?: APIRequestOptions): Observable<any> {
+        return this.request('PUT', path, body, options);
     }
 
-    patch(path: string, data?: any, options?: APIRequestOptions): Observable<any> {
-        return this.request('PATCH', path, data, options);
+    patch(path: string, body?: any, options?: APIRequestOptions): Observable<any> {
+        return this.request('PATCH', path, body, options);
     }
 
-    delete(path: string, data?: any, options?: APIRequestOptions): Observable<any> {
-        return this.request('DELETE', path, data, options);
+    delete(path: string, body?: any, options?: APIRequestOptions): Observable<any> {
+        return this.request('DELETE', path, body, options);
     }
 
     request(
         method: string,
         path: string, 
-        data: string, 
+        body: any, 
         options: APIRequestOptions
     ): Observable<any> {
         method = method.toUpperCase();
@@ -61,29 +63,28 @@ export class APIService {
 
         const url = this.getUrl(path);
 
-        if (method === 'GET' && options.cacheable) {
-            const data = this.getFromCache(url, options);
+        const cacheable = (
+            method === 'GET' && options.cacheable && options.observe === 'body'
+        );
+
+        if (cacheable) {
+            const data = this.getFromCache(url);
             if (data !== undefined) {
                 return Observable.of(data);
             }
         }
 
-        const headers = this.getHeaders(options);
-
-        const req = new HttpRequest(method, url, data, {
-            headers: new HttpHeaders(headers),
-            params: new HttpParams({ fromObject: options.params }),
-            responseType: options.responseType
+        return this.http.request(method, url, {
+            body,
+            headers: this.getHeaders(options),
+            params: options.params,
+            responseType: options.responseType,
+            observe: options.observe
+        }).do(res => {
+            if (cacheable) {
+                this.saveToCache(url, options, res);
+            }
         });
-
-        return this.http.request(req)
-            .filter(res => res instanceof HttpResponse)
-            .map(res => res['body'])
-            .do(res => {
-                if (options.cacheable) {
-                    this.saveToCache(url, options, res);
-                }
-            });
     }
 
     private getUrl(path: string): string {
@@ -107,7 +108,7 @@ export class APIService {
         return 'FAKE_TOKEN';
     }
 
-    private getFromCache(url: string, options: APIRequestOptions): any {
+    private getFromCache(url: string): any {
         const inCache = this.cache[url];
         return (inCache && inCache.expire > new Date())?
             inCache.data: undefined;
