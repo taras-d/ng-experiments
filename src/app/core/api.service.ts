@@ -15,7 +15,7 @@ export interface APIRequestOptions {
 @Injectable()
 export class ApiService {
 
-    static readonly baseUrl = 'https://randomuser.me/api/';
+    static readonly baseUrl = 'http://url/to/api';
 
     static readonly defaultOptions = {
         tokenize: true,
