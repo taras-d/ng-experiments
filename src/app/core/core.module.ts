@@ -6,8 +6,9 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/share';
 
-import { APIService } from './api.service'
+import { ApiService } from './api.service'
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { APIService } from './api.service'
   ],
   declarations: [],
   providers: [
-    APIService
+    ApiService
   ]
 })
 export class CoreModule { }

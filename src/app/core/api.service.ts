@@ -9,22 +9,22 @@ export interface APIRequestOptions {
     tokenize?: boolean;
     responseType?: 'arraybuffer' | 'blob' | 'json' | 'text';
     observe?: 'body' | 'response' | 'events';
-    cacheable?: number;
+    cacheable?: number | boolean;
 }
 
 @Injectable()
-export class APIService {
+export class ApiService {
 
-    static readonly baseUrl = 'http://path/to/api';
+    static readonly baseUrl = 'https://randomuser.me/api/';
 
-    static readonly defaults = {
+    static readonly defaultOptions = {
         tokenize: true,
         responseType: 'json',
         observe: 'body'
     };
 
     private cache: {
-        [key: string]: { expire: Date | boolean, data: any }
+        [key: string]: { pending: Observable<any>, data: Observable<any>, expire: Date }
     } = {};
 
     constructor(private http: HttpClient) {
@@ -59,36 +59,44 @@ export class APIService {
     ): Observable<any> {
         method = method.toUpperCase();
 
-        options = Object.assign({}, APIService.defaults, options);
+        // Merge options with default options
+        options = Object.assign({}, ApiService.defaultOptions, options);
 
+        // Get absolute url
         const url = this.getUrl(path);
 
+        // Detect whether request cacheable or not  
         const cacheable = (
             method === 'GET' && options.cacheable && options.observe === 'body'
         );
 
+        // Return cached data
         if (cacheable) {
-            const data = this.getFromCache(url);
-            if (data !== undefined) {
-                return Observable.of(data);
+            const cached = this.getFromCache(url);
+            if (cached) {
+                return cached;
             }
         }
 
-        return this.http.request(method, url, {
+        // Create http request
+        let obs = this.http.request(method, url, {
             body,
             headers: this.getHeaders(options),
             params: options.params,
             responseType: options.responseType,
             observe: options.observe
-        }).do(res => {
-            if (cacheable) {
-                this.saveToCache(url, options, res);
-            }
         });
+
+        // Save data in cache
+        if (cacheable) {
+            obs = this.saveInCache(obs, url, options);
+        }
+
+        return obs;
     }
 
     private getUrl(path: string): string {
-        return `${APIService.baseUrl.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
+        return `${ApiService.baseUrl}/${path}`.replace(/([^:]\/)\/+/g, '$1');
     }
 
     private getHeaders(options: APIRequestOptions): {[key: string]: any} {
@@ -108,16 +116,33 @@ export class APIService {
         return 'FAKE_TOKEN';
     }
 
-    private getFromCache(url: string): any {
-        const inCache = this.cache[url];
-        return (inCache && inCache.expire > new Date())?
-            inCache.data: undefined;
+    private saveInCache(obs: Observable<any>, url: string, options: APIRequestOptions): Observable<any> {
+        let expire;
+
+        if (options.cacheable === true) {
+            expire = null;
+        } else {
+            expire = new Date();
+            expire.setMinutes( expire.getMinutes() + options.cacheable );
+        }
+
+        obs = obs.share().do(res => {
+            this.cache[url].pending = null;
+            this.cache[url].data = Observable.of(res);
+        });
+
+        this.cache[url] = { pending: obs, data: null, expire };
+
+        return obs;
     }
 
-    private saveToCache(url: string, options: APIRequestOptions, data: any): void {
-        const expire = new Date();
-        expire.setMinutes( expire.getMinutes() + options.cacheable );
-        this.cache[url] = { expire, data };
+    private getFromCache(url: string): Observable<any> {
+        const inCache = this.cache[url];
+        if (inCache && (inCache.expire === null || inCache.expire > new Date())) {
+            return inCache.pending || inCache.data;
+        } else {
+            return null;
+        }
     }
 
 }
