@@ -16,7 +16,7 @@ export interface APIRequestOptions {
 export class ApiService {
 
     static readonly baseUrl = 'http://url/to/api';
-
+    
     static readonly defaultOptions = {
         tokenize: true,
         responseType: 'json',
@@ -65,12 +65,13 @@ export class ApiService {
         // Get absolute url
         const url = this.getUrl(path);
 
-        // Detect whether request cacheable or not  
+        // Detect whether request cacheable or not
         const cacheable = (
-            method === 'GET' && options.cacheable && options.observe === 'body'
+            options.cacheable && method === 'GET' && 
+            ['body', 'response'].includes(options.observe)
         );
 
-        // Return cached data
+        // Try to return data from cache
         if (cacheable) {
             const cached = this.getFromCache(url);
             if (cached) {
@@ -87,9 +88,9 @@ export class ApiService {
             observe: options.observe
         });
 
-        // Save data in cache
+        // Make request cacheable
         if (cacheable) {
-            obs = this.saveInCache(obs, url, options);
+            obs = this.makeCacheable(obs, url, options);
         }
 
         return obs;
@@ -116,14 +117,16 @@ export class ApiService {
         return 'FAKE_TOKEN';
     }
 
-    private saveInCache(obs: Observable<any>, url: string, options: APIRequestOptions): Observable<any> {
+    private makeCacheable(obs: Observable<any>, url: string, options: APIRequestOptions): Observable<any> {
         let expire;
 
-        if (options.cacheable === true) {
-            expire = null;
-        } else {
+        if (typeof options.cacheable === 'number') {
             expire = new Date();
             expire.setMinutes( expire.getMinutes() + options.cacheable );
+        } else if (options.cacheable) {
+            expire = null;
+        } else {
+            return obs;
         }
 
         obs = obs.share().do(res => {
