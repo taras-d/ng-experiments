@@ -28,7 +28,7 @@ export class ObservableManager {
     ) {}
 
     exec(name: string, ...args: any[]): void {
-        const config = this[name] as ObserverConfig;
+        const config = this.config[name];
 
         if (!config) {
             console.warn(`Observer with name "${name}" not found`);
