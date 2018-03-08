@@ -9,7 +9,6 @@ export interface ApiRequestOptions {
     tokenize?: boolean;
     responseType?: 'arraybuffer' | 'blob' | 'json' | 'text';
     observe?: 'body' | 'response' | 'events';
-    cacheable?: number | boolean;
 }
 
 @Injectable()
@@ -22,8 +21,6 @@ export class ApiService {
         responseType: 'json',
         observe: 'body'
     };
-
-    private cache = new Cache();
 
     constructor(private http: HttpClient) {
         
@@ -63,16 +60,13 @@ export class ApiService {
 
         const url = this.getUrl(path);
 
-        return this.cache.fromCache(
-            method, url, options,
-            () => this.http.request(method, url, {
-                body,
-                headers: this.getHeaders(options),
-                params: options.params,
-                responseType: options.responseType,
-                observe: options.observe
-            })
-        );
+        return this.http.request(method, url, {
+            body,
+            headers: this.getHeaders(options),
+            params: options.params,
+            responseType: options.responseType,
+            observe: options.observe
+        });
     }
 
     private getUrl(path: string): string {
@@ -94,20 +88,6 @@ export class ApiService {
 
     private getAuthToken(): string {
         return 'FAKE_TOKEN';
-    }
-
-}
-
-class Cache {
-
-    fromCache(
-        method: string,
-        url: string,
-        options: ApiRequestOptions,
-        createRequest: () => Observable<any>
-    ): Observable<any> {
-        // TODO: Return data from cache or create request
-        return createRequest();
     }
 
 }
