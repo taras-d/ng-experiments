@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
+import { ReactiveFormsDemoModule } from './reactive-forms-demo/reactive-forms-demo.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { CoreModule } from './core/core.module';
   imports: [
     BrowserModule,
     CoreModule,
+    ReactiveFormsDemoModule,
     AppRoutingModule
   ],
   providers: [],

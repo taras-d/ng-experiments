@@ -1,0 +1,39 @@
+<header>Simple form</header>
+
+<form [formGroup]="userForm" (ngSubmit)="onUserFormSubmit()">
+  <!-- Name -->
+  <label>Name</label>
+  <input type="text" formControlName="name">
+  <br><br>
+  <!-- Gender -->
+  <label>Gender:</label>
+  <label>
+    male <input type="radio" formControlName="gender" value="male">
+  </label>
+  <label>
+    female <input type="radio" formControlName="gender" value="female">
+  </label>
+  <label>
+    unknown <input type="radio" formControlName="gender" value="">
+  </label>
+  <br><br>
+  <!-- Email -->
+  <label>Email</label>
+  <input type="text" formControlName="email">
+  <br><br>
+  <!-- Country -->
+  <label>Country</label> 
+  <select formControlName="country">
+    <option *ngFor="let country of countries" [value]="country.value">
+      {{country.text}}
+    </option>
+  </select>
+  <br><br>
+  <!-- Subscribe to newsletter -->
+  <label>
+    Subscribe on newsletter 
+    <input type="checkbox" formControlName="newsletter">
+  </label>
+  <br><br>
+  <button type="submit">Submit</button>
+</form>
