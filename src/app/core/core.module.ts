@@ -7,9 +7,13 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/share';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/catch';
 
-import { ApiService } from './api.service'
+import { ApiService } from './api.service';
+import { AppInitializer } from './app-intializer.service';
 
 @NgModule({
   imports: [
@@ -18,7 +22,9 @@ import { ApiService } from './api.service'
   ],
   declarations: [],
   providers: [
-    ApiService
+    ApiService,
+    AppInitializer,
+    AppInitializer.factory
   ]
 })
 export class CoreModule { }
