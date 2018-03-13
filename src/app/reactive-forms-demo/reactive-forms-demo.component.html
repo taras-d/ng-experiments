@@ -1,39 +1,84 @@
-<header>Simple form</header>
+<section>
+  <header>Simple form</header>
+  <form [formGroup]="userForm" (ngSubmit)="onUserFormSubmit()">
+    <fieldset>
+      <label>Name</label>
+      <input type="text" formControlName="name">
+    </fieldset>
+    <fieldset>
+      <label>Gender:</label>
+      <label>
+        male <input type="radio" formControlName="gender" value="male">
+      </label>
+      <label>
+        female <input type="radio" formControlName="gender" value="female">
+      </label>
+      <label>
+        unknown <input type="radio" formControlName="gender" value="">
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>Email</label>
+      <input type="text" formControlName="email">
+    </fieldset>
+    <fieldset>
+      <label>Country</label> 
+      <select formControlName="country">
+        <option *ngFor="let country of countries" [value]="country.value">
+          {{country.text}}
+        </option>
+      </select>
+    </fieldset>
+    <fieldset>
+      <label>
+        Subscribe on newsletter 
+        <input type="checkbox" formControlName="newsletter">
+      </label>
+    </fieldset>
+    <fieldset>
+      <button type="submit">Submit</button>
+    </fieldset>
+  </form>
+</section>
 
-<form [formGroup]="userForm" (ngSubmit)="onUserFormSubmit()">
-  <!-- Name -->
-  <label>Name</label>
-  <input type="text" formControlName="name">
-  <br><br>
-  <!-- Gender -->
-  <label>Gender:</label>
-  <label>
-    male <input type="radio" formControlName="gender" value="male">
-  </label>
-  <label>
-    female <input type="radio" formControlName="gender" value="female">
-  </label>
-  <label>
-    unknown <input type="radio" formControlName="gender" value="">
-  </label>
-  <br><br>
-  <!-- Email -->
-  <label>Email</label>
-  <input type="text" formControlName="email">
-  <br><br>
-  <!-- Country -->
-  <label>Country</label> 
-  <select formControlName="country">
-    <option *ngFor="let country of countries" [value]="country.value">
-      {{country.text}}
-    </option>
-  </select>
-  <br><br>
-  <!-- Subscribe to newsletter -->
-  <label>
-    Subscribe on newsletter 
-    <input type="checkbox" formControlName="newsletter">
-  </label>
-  <br><br>
-  <button type="submit">Submit</button>
-</form>
+<section>
+  <header>Array form</header>
+  <form [formGroup]="cardsForm" (ngSubmit)="onCardFormSubmit()">
+    <table *ngIf="cardsForm.length">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>number</th>
+          <th>type</th>
+          <th style="width: 40px">discount</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ctrl of cardsForm.controls; let i = index" [formGroupName]="i">
+          <td>
+            {{ctrl.value.id}}
+          </td>
+          <td>
+            <input type="text" formControlName="num">
+          </td>
+          <td>
+            <select formControlName="type">
+              <option *ngFor="let type of cardTypes" [value]="type.value">{{type.text}}</option>
+            </select>
+          </td>
+          <td>
+            <input type="text" formControlName="discount">
+          </td>
+          <td>
+            <a (click)="onCardDelete(i)">[del]</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a (click)="onCardAdd()">[add card]</a>
+    <br>
+    <br>
+    <button type="submit" *ngIf="cardsForm.length && cardsForm.valid">Submit</button>
+  </form>
+</section>

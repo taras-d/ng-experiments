@@ -9,5 +9,5 @@ ng serve
 - animations
 - template outlet
 - dynamic components
-- reactive forms
+- ~~reactive forms~~
 - lazy loading
