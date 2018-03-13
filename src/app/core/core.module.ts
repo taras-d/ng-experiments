@@ -13,7 +13,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 
 import { ApiService } from './api.service';
-import { AppInitializer } from './app-intializer.service';
+import { AppInitializerService } from './app-intializer.service';
 
 @NgModule({
   imports: [
@@ -23,8 +23,8 @@ import { AppInitializer } from './app-intializer.service';
   declarations: [],
   providers: [
     ApiService,
-    AppInitializer,
-    AppInitializer.factory
+    AppInitializerService,
+    AppInitializerService.factory
   ]
 })
 export class CoreModule { }
