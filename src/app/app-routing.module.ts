@@ -8,6 +8,10 @@ const routes: Routes = [
     redirectTo: 'reactive-forms'
   },
   {
+    path: 'lazy-loading',
+    loadChildren: 'app/lazy-loading-demo/lazy-loading-demo.module#LazyLoadingDemoModule'
+  },
+  {
     path: '**',
     redirectTo: 'reactive-forms'
   }

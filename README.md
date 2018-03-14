@@ -10,4 +10,4 @@ ng serve
 - template outlet
 - dynamic components
 - ~~reactive forms~~
-- lazy loading
+- ~~lazy loading~~
