@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { ApiService } from './api.service';
  
 @Injectable()
-export class AppInitializerService {
+export class AppStartService {
 
     static factory: FactoryProvider;
 
@@ -13,15 +13,15 @@ export class AppInitializerService {
 
     }
 
-    init(): Promise<any> {
+    load(): Promise<any> {
         return Observable.of(null).toPromise();
     }
 
 }
 
-AppInitializerService.factory = {
+AppStartService.factory = {
     provide: APP_INITIALIZER,
-    useFactory: initializer => () => initializer.init(),
-    deps: [AppInitializerService],
+    useFactory: appStart => () => appStart.load(),
+    deps: [AppStartService],
     multi: true
 };
