@@ -8,6 +8,6 @@ ng serve
 ## To do
 - animations
 - template outlet
-- dynamic components
+- ~~dynamic components~~
 - ~~reactive forms~~
 - ~~lazy loading~~
