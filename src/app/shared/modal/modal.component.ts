@@ -12,6 +12,7 @@ export class ModalComponent {
   @Input() closeByOverlay = true;
   @Input() closeByEsc = true;
   @Input() maxWidth = '500px';
+  @Input() header = '';
 
   @Output() visibleChange = new EventEmitter();
 

@@ -4,8 +4,8 @@
 
   <div class="modal-viewport" (click)="onViewportClick($event)">
     <div class="modal-content" [style.maxWidth]="maxWidth">
-      <div *ngIf="closeIcon" class="modal-close" 
-        (click)="onCloseClick()">x</div>
+      <div *ngIf="header" class="modal-header">{{header}}</div>
+      <div *ngIf="closeIcon" class="modal-close" (click)="onCloseClick()">x</div>
       <ng-content></ng-content>
     </div>
   </div>
