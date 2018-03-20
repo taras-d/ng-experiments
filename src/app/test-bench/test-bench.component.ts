@@ -17,6 +17,11 @@ export class TestBenchComponent implements OnInit {
     closeByEsc: true
   };
 
+  popover = {
+    trigger: 'click',
+    position: 'bottom'
+  };
+
   constructor(private activatedRoute: ActivatedRoute) { 
 
   }

@@ -1,0 +1,12 @@
+<div class="popover-trigger" 
+  (click)="onTriggerMouseEvent($event)"
+  (mouseenter)="onTriggerMouseEvent($event)"
+  (mouseleave)="onTriggerMouseEvent($event)">
+  <ng-content select="[popoverTrigger]"></ng-content>
+</div>
+
+<div class="popover-content" [class.visible]="visible">
+  <div class="popover-body">
+    <ng-content select="[popoverBody]"></ng-content>
+  </div>
+</div>

@@ -27,3 +27,50 @@
     <div>Content</div>
   </t-modal>
 </section>
+
+<!-- Popover -->
+<section *ngIf="name === 'popover'">
+  <header>Popover</header>
+
+  <label>
+    trigger:
+    <select [(ngModel)]="popover.trigger">
+      <option value="click">click</option>
+      <option value="hover">hover</option>
+    </select>
+  </label>
+  <br>
+  <label>
+    position:
+    <select [(ngModel)]="popover.position">
+      <option value="top">top</option>
+      <option value="left">left</option>
+      <option value="right">right</option>
+      <option value="bottom">bottom</option>
+    </select>
+  </label>
+  <br>
+  <label>
+    <input type="checkbox" [(ngModel)]="popover.closeByClickOutside" 
+      [disabled]="popover.trigger !== 'click'">
+    close by click outside
+  </label>
+  <br>
+  <br>
+
+  <t-popover
+    [trigger]="popover.trigger"
+    [position]="popover.position"
+    [closeByClickOutside]="popover.closeByClickOutside">
+    <button popoverTrigger>Popover 1</button>
+    <div popoverBody>Hi!</div>
+  </t-popover>
+
+  <t-popover
+    [trigger]="popover.trigger"
+    [position]="popover.position"
+    [closeByClickOutside]="popover.closeByClickOutside">
+    <a popoverTrigger>Popover 2</a>
+    <div popoverBody>Hello!</div>
+  </t-popover>
+</section>
