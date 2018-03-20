@@ -1,0 +1,30 @@
+<!-- Modal -->
+<section *ngIf="name === 'modal'">
+  <header>Modal</header>
+
+  <label>
+    <input type="checkbox" [(ngModel)]="modal.visible"> show
+  </label>
+  <br>
+  <label>
+    <input type="checkbox" [(ngModel)]="modal.closeIcon"> close icon
+  </label>
+  <br>
+  <label>
+    <input type="checkbox" [(ngModel)]="modal.closeByOverlay"> close by overlay
+  </label>
+  <br>
+  <label>
+    <input type="checkbox" [(ngModel)]="modal.closeByEsc"> close by esc
+  </label>
+
+  <t-modal
+    [(visible)]="modal.visible"
+    [closeIcon]="modal.closeIcon"
+    [closeByOverlay]="modal.closeByOverlay"
+    [closeByEsc]="modal.closeByEsc">
+    <p>
+      Modal content
+    </p>
+  </t-modal>
+</section>
