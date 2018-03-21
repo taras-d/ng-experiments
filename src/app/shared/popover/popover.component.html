@@ -5,7 +5,7 @@
   <ng-content select="[popoverTrigger]"></ng-content>
 </div>
 
-<div class="popover-content" [class.visible]="visible">
+<div class="popover-content" [ngClass]="getContentClasses()">
   <div class="popover-body">
     <ng-content select="[popoverBody]"></ng-content>
   </div>

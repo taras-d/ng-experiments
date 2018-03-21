@@ -58,19 +58,23 @@
   <br>
   <br>
 
-  <t-popover
-    [trigger]="popover.trigger"
-    [position]="popover.position"
-    [closeByClickOutside]="popover.closeByClickOutside">
-    <button popoverTrigger>Popover 1</button>
-    <div popoverBody>Hi!</div>
-  </t-popover>
+  <div style="text-align: center; padding: 50px">
+    <t-popover
+      [trigger]="popover.trigger"
+      [position]="popover.position"
+      [closeByClickOutside]="popover.closeByClickOutside">
+      <button popoverTrigger>Popover 1</button>
+      <i popoverBody>Popover 1 body</i>
+    </t-popover>
+  </div>
 
-  <t-popover
-    [trigger]="popover.trigger"
-    [position]="popover.position"
-    [closeByClickOutside]="popover.closeByClickOutside">
-    <a popoverTrigger>Popover 2</a>
-    <div popoverBody>Hello!</div>
-  </t-popover>
+  <div style="text-align: center; padding: 50px">
+    <t-popover
+      [trigger]="popover.trigger"
+      [position]="popover.position"
+      [closeByClickOutside]="popover.closeByClickOutside">
+      <a popoverTrigger>Popover 2</a>
+      <i popoverBody>Popover 2 body</i>
+    </t-popover>
+  </div>
 </section>

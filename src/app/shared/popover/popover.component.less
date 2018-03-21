@@ -10,7 +10,38 @@
 .popover-content {
     display: none;
     position: absolute;
+    z-index: 1;
     &.visible {
         display: block;
     }
+    &.top {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        padding-bottom: 8px;
+    }
+    &.bottom {
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        padding-top: 8px;
+    }
+    &.left {
+        top: 50%;
+        left: 0;
+        transform: translate(-100%, -50%);
+        padding-right: 8px;
+    }
+    &.right {
+        top: 50%;
+        left: 100%;
+        transform: translate(0, -50%);
+        padding-left: 8px;
+    }
+}
+
+.popover-body {
+    background-color: white;
+    box-shadow: 0 0 10px silver;
+    padding: 10px;
 }

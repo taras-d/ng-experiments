@@ -22,11 +22,11 @@ export class PopoverComponent {
       type = event.type;
 
     if (trigger === 'click' && type === 'click') {
-      this.visible = !this.visible;
+      this.changeVisibility(!this.visible);
     } else if (trigger === 'hover' && type === 'mouseenter') {
-      this.visible = true;
+      this.changeVisibility(true);
     } else if (trigger === 'hover' && type === 'mouseleave') {
-      this.visible = false;
+      this.changeVisibility(false);
     }
   }
 
@@ -38,8 +38,22 @@ export class PopoverComponent {
       this.closeByClickOutside && 
       (event.target as HTMLElement).closest('t-popover') !== this.el.nativeElement
     ) {
-      this.visible = false;
+      this.changeVisibility(false);
     }
+  }
+
+  getContentClasses(): {[key: string]: any} {
+    const classes = { visible: this.visible };
+
+    if (this.position) {
+      classes[this.position] = true;
+    }
+    
+    return classes;
+  }
+
+  changeVisibility(visible: boolean): void {
+    this.visible = visible;
   }
 
 }
