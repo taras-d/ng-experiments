@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from './modal/modal.component';
-import { PopoverComponent } from './popover/popover.component';
+import { TooltipComponent } from './tooltip/tooltip.component';
 
 @NgModule({
   imports: [
@@ -9,11 +9,11 @@ import { PopoverComponent } from './popover/popover.component';
   ],
   exports: [
     ModalComponent,
-    PopoverComponent
+    TooltipComponent
   ],
   declarations: [
     ModalComponent,
-    PopoverComponent
+    TooltipComponent
   ]
 })
 export class SharedModule { }

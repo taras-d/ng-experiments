@@ -1,11 +1,11 @@
 import { Component, Input, HostListener, ElementRef } from '@angular/core';
 
 @Component({
-  selector: 't-popover',
-  templateUrl: './popover.component.html',
-  styleUrls: ['./popover.component.less']
+  selector: 't-tooltip',
+  templateUrl: './tooltip.component.html',
+  styleUrls: ['./tooltip.component.less']
 })
-export class PopoverComponent {
+export class TooltipComponent {
 
   @Input() trigger: 'click' | 'hover' = 'click';
   @Input() position: 'top' | 'left' | 'right' | 'bottom' = 'bottom';
@@ -17,16 +17,17 @@ export class PopoverComponent {
 
   }
 
-  onTriggerMouseEvent(event: MouseEvent): void {
-    const trigger = this.trigger,
-      type = event.type;
-
-    if (trigger === 'click' && type === 'click') {
+  onTriggerClick(): void {
+    if (this.trigger === 'click') {
       this.changeVisibility(!this.visible);
-    } else if (trigger === 'hover' && type === 'mouseenter') {
-      this.changeVisibility(true);
-    } else if (trigger === 'hover' && type === 'mouseleave') {
-      this.changeVisibility(false);
+    }
+  }
+
+  @HostListener('mouseenter', ['$event'])
+  @HostListener('mouseleave', ['$event'])
+  onHostMouseEnterLeave(event: MouseEvent): void {
+    if (this.trigger === 'hover') {
+      this.changeVisibility(event.type === 'mouseenter');
     }
   }
 
@@ -36,7 +37,7 @@ export class PopoverComponent {
       this.visible &&
       this.trigger === 'click' &&
       this.closeByClickOutside && 
-      (event.target as HTMLElement).closest('t-popover') !== this.el.nativeElement
+      (event.target as HTMLElement).closest('t-tooltip') !== this.el.nativeElement
     ) {
       this.changeVisibility(false);
     }

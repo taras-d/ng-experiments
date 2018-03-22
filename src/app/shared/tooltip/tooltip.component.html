@@ -1,0 +1,10 @@
+<div class="tooltip-trigger" (click)="onTriggerClick($event)">
+  <ng-content select="[tooltipTrigger]"></ng-content>
+</div>
+
+<div class="tooltip-content" [ngClass]="getContentClasses()">
+  <div class="tooltip-body">
+    <div class="tooltip-arrow {{position}}"></div>
+    <ng-content select="[tooltipBody]"></ng-content>
+  </div>
+</div>

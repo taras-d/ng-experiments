@@ -28,13 +28,13 @@
   </t-modal>
 </section>
 
-<!-- Popover -->
-<section *ngIf="name === 'popover'">
-  <header>Popover</header>
+<!-- Tooltip -->
+<section *ngIf="name === 'tooltip'">
+  <header>Tooltip</header>
 
   <label>
     trigger:
-    <select [(ngModel)]="popover.trigger">
+    <select [(ngModel)]="tooltip.trigger">
       <option value="click">click</option>
       <option value="hover">hover</option>
     </select>
@@ -42,7 +42,7 @@
   <br>
   <label>
     position:
-    <select [(ngModel)]="popover.position">
+    <select [(ngModel)]="tooltip.position">
       <option value="top">top</option>
       <option value="left">left</option>
       <option value="right">right</option>
@@ -51,30 +51,30 @@
   </label>
   <br>
   <label>
-    <input type="checkbox" [(ngModel)]="popover.closeByClickOutside" 
-      [disabled]="popover.trigger !== 'click'">
+    <input type="checkbox" [(ngModel)]="tooltip.closeByClickOutside" 
+      [disabled]="tooltip.trigger !== 'click'">
     close by click outside
   </label>
   <br>
   <br>
 
   <div style="text-align: center; padding: 50px">
-    <t-popover
-      [trigger]="popover.trigger"
-      [position]="popover.position"
-      [closeByClickOutside]="popover.closeByClickOutside">
-      <button popoverTrigger>Popover 1</button>
-      <i popoverBody>Popover 1 body</i>
-    </t-popover>
+    <t-tooltip
+      [trigger]="tooltip.trigger"
+      [position]="tooltip.position"
+      [closeByClickOutside]="tooltip.closeByClickOutside">
+      <button tooltipTrigger>Tooltip 1</button>
+      <i tooltipBody>Tooltip 1 body</i>
+    </t-tooltip>
   </div>
 
   <div style="text-align: center; padding: 50px">
-    <t-popover
-      [trigger]="popover.trigger"
-      [position]="popover.position"
-      [closeByClickOutside]="popover.closeByClickOutside">
-      <a popoverTrigger>Popover 2</a>
-      <i popoverBody>Popover 2 body</i>
-    </t-popover>
+    <t-tooltip
+      [trigger]="tooltip.trigger"
+      [position]="tooltip.position"
+      [closeByClickOutside]="tooltip.closeByClickOutside">
+      <a tooltipTrigger>Tooltip 2</a>
+      <i tooltipBody>Tooltip 2 body</i>
+    </t-tooltip>
   </div>
 </section>

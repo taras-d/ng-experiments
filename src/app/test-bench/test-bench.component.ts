@@ -17,7 +17,7 @@ export class TestBenchComponent implements OnInit {
     closeByEsc: true
   };
 
-  popover = {
+  tooltip = {
     trigger: 'click',
     position: 'bottom',
     closeByClickOutside: true
