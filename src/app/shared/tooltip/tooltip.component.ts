@@ -8,7 +8,14 @@ import { Component, Input, HostListener, ElementRef } from '@angular/core';
 export class TooltipComponent {
 
   @Input() trigger: 'click' | 'hover' = 'click';
-  @Input() position: 'top' | 'left' | 'right' | 'bottom' = 'bottom';
+
+  @Input() position: (
+    'top' | 'top-left' | 'top-right' |
+    'left' | 'left-top' | 'left-bottom' |
+    'bottom' | 'bottom-left' | 'bottom-right' |
+    'right' | 'right-top' | 'right-bottom'
+  ) = 'bottom';
+  
   @Input() closeByClickOutside = true;
 
   visible = false;

@@ -14,30 +14,6 @@
     &.visible {
         display: block;
     }
-    &.top {
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, -100%);
-        padding-bottom: 8px;
-    }
-    &.bottom {
-        top: 100%;
-        left: 50%;
-        transform: translate(-50%, 0);
-        padding-top: 8px;
-    }
-    &.left {
-        top: 50%;
-        left: 0;
-        transform: translate(-100%, -50%);
-        padding-right: 8px;
-    }
-    &.right {
-        top: 50%;
-        left: 100%;
-        transform: translate(0, -50%);
-        padding-left: 8px;
-    }
 }
 
 .tooltip-body {
@@ -52,24 +28,136 @@
     width: 0;
     height: 0;
     position: absolute;
-    &.top {
+}
+
+/* Top */
+.tooltip-content.top {
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%);
+    padding-bottom: 8px;
+    .tooltip-arrow {
         border-top-color: white;
         bottom: -10px;
         left: ~"calc(50% - 5px)";
     }
-    &.left {
-        border-left-color: white;
-        right: -10px;
-        top: ~"calc(50% - 5px)";
+}
+.tooltip-content.top-left {
+    left: 0;
+    bottom: 100%;
+    padding-bottom: 8px;
+    .tooltip-arrow {
+        border-top-color: white;
+        bottom: -10px;
+        left: 10px;
     }
-    &.right {
+}
+.tooltip-content.top-right {
+    right: 0;
+    bottom: 100%;
+    padding-bottom: 8px;
+    .tooltip-arrow {
+        border-top-color: white;
+        bottom: -10px;
+        right: 10px;
+    }
+}
+
+/* Right */
+.tooltip-content.right {
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    padding-left: 8px;
+    .tooltip-arrow {
         border-right-color: white;
         left: -10px;
         top: ~"calc(50% - 5px)";
     }
-    &.bottom {
+}
+.tooltip-content.right-top {
+    top: 0;
+    left: 100%;
+    padding-left: 8px;
+    .tooltip-arrow {
+        border-right-color: white;
+        left: -10px;
+        top: 10px;
+    }
+}
+.tooltip-content.right-bottom {
+    bottom: 0;
+    left: 100%;
+    padding-left: 8px;
+    .tooltip-arrow {
+        border-right-color: white;
+        left: -10px;
+        bottom: 10px;
+    }
+}
+
+/* Bottom */
+.tooltip-content.bottom {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 8px;
+    .tooltip-arrow {
         border-bottom-color: white;
         top: -10px;
         left: ~"calc(50% - 5px)";
+    }
+}
+.tooltip-content.bottom-left {
+    top: 100%;
+    left: 0;
+    padding-top: 8px;
+    .tooltip-arrow {
+        border-bottom-color: white;
+        top: -10px;
+        left: 10px;
+    }
+}
+.tooltip-content.bottom-right {
+    top: 100%;
+    right: 0;
+    padding-top: 8px;
+    .tooltip-arrow {
+        border-bottom-color: white;
+        top: -10px;
+        right: 10px;
+    }
+}
+
+/* Left */
+.tooltip-content.left {
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    padding-right: 8px;
+    .tooltip-arrow {
+        border-left-color: white;
+        right: -10px;
+        top: ~"calc(50% - 5px)";
+    }
+}
+.tooltip-content.left-top {
+    top: 0;
+    right: 100%;
+    padding-right: 8px;
+    .tooltip-arrow {
+        border-left-color: white;
+        right: -10px;
+        top: 10px;
+    }
+}
+.tooltip-content.left-bottom {
+    bottom: 0;
+    right: 100%;
+    padding-right: 8px;
+    .tooltip-arrow {
+        border-left-color: white;
+        right: -10px;
+        bottom: 10px;
     }
 }
