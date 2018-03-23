@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from './modal/modal.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   imports: [
@@ -9,11 +10,13 @@ import { TooltipComponent } from './tooltip/tooltip.component';
   ],
   exports: [
     ModalComponent,
-    TooltipComponent
+    TooltipComponent,
+    LoaderComponent
   ],
   declarations: [
     ModalComponent,
-    TooltipComponent
+    TooltipComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule { }

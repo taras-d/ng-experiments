@@ -74,7 +74,7 @@
   <br>
   <br>
 
-  <div style="text-align: center; padding-top: 100px">
+  <div style="text-align: center; padding-top: 75px">
     <t-tooltip
       [trigger]="tooltip.trigger"
       [position]="tooltip.position"
@@ -85,7 +85,7 @@
     </t-tooltip>
   </div>
 
-  <div style="text-align: center; padding-top: 100px">
+  <div style="text-align: center; padding-top: 75px">
     <t-tooltip
       [trigger]="tooltip.trigger"
       [position]="tooltip.position"
@@ -96,7 +96,7 @@
     </t-tooltip>
   </div>
 
-  <div style="padding-top: 100px">
+  <div style="padding-top: 75px">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
     <t-tooltip
       [trigger]="tooltip.trigger"
@@ -109,7 +109,7 @@
     risus quam, sagittis a imperdiet sit amet, fermentum in ipsum. Nam et imperdiet magna, et molestie mauris. Vestibulum viverra iaculis ex in lobortis. Ut congue odio eros, nec convallis dolor faucibus et. Aliquam massa dui, gravida non mauris ut, pharetra mattis nulla. Donec tempus mattis magna, ut sagittis metus ornare rhoncus. Aliquam imperdiet molestie sapien, vel pulvinar lectus viverra quis.
   </div>
 
-  <div style="padding-top: 100px; text-align: center;">
+  <div style="padding-top: 75px; text-align: center;">
     <t-tooltip
       [trigger]="tooltip.trigger"
       [position]="tooltip.position"
@@ -118,5 +118,27 @@
       <input tooltipTrigger placeholder="Enter MAC address">
       <div tooltipBody style="width: 200px">Media Access Control address</div>
     </t-tooltip>
+  </div>
+</section>
+
+<!-- Loader -->
+<section *ngIf="name === 'loader'">
+  <header>Loader</header>
+  <t-loader></t-loader>
+
+  <br>
+  <br>
+
+  <label>
+    <input type="checkbox" [(ngModel)]="loader.block"> block loader
+  </label>
+  <div style="padding: 5px; border: 1px dotted silver; position: relative">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a enim placerat, luctus lorem vel, suscipit lorem. Sed volutpat, risus vestibulum elementum euismod, lacus sem accumsan eros, id sodales nunc risus ut mauris. Integer et gravida ligula. Aliquam nec commodo elit.
+    </p>
+    <p>
+      Nam eget risus ante. Etiam ut lorem eu est convallis congue at vel risus. Duis tortor mauris, fermentum eleifend est sed, molestie pretium turpis. Pellentesque nisl orci, malesuada semper finibus vel, euismod a dui. Integer eget eros mollis, laoreet nisl in, commodo nulla.
+    </p>
+    <t-loader *ngIf="loader.block" class="block"></t-loader>
   </div>
 </section>

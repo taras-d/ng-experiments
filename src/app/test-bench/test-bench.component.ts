@@ -24,6 +24,10 @@ export class TestBenchComponent implements OnInit {
     closeByClickOutside: true
   };
 
+  loader = {
+    block: true
+  };
+
   constructor(private activatedRoute: ActivatedRoute) { 
 
   }

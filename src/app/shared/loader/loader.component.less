@@ -1,0 +1,53 @@
+:host {
+    display: inline-block;
+}
+
+:host(.block) {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        opacity: 0.7;
+    }
+    &:after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 0;
+        vertical-align: middle;
+    }
+    .spinner {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+.spinner {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #00bcd4;
+    border-top-color: #e0e0e0;
+    border-bottom-color: #e0e0e0;
+    border-radius: 100%;
+    animation: rotating 1.2s linear infinite;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
