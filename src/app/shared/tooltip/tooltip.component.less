@@ -19,7 +19,8 @@
 .tooltip-body {
     position: relative;
     background-color: white;
-    box-shadow: 0 0 10px darkgrey;
+    box-shadow: 0 0 10px silver;
+    border: 1px solid gray;
     border-radius: 4px;
     padding: 10px;
 }
@@ -31,6 +32,8 @@
     position: absolute;
 }
 
+@arrow-color: gray;
+
 /* Top */
 .tooltip-content.top {
     left: 50%;
@@ -38,7 +41,7 @@
     transform: translateX(-50%);
     padding-bottom: 8px;
     .tooltip-arrow {
-        border-top-color: white;
+        border-top-color: @arrow-color;
         bottom: -10px;
         left: ~"calc(50% - 5px)";
     }
@@ -48,7 +51,7 @@
     bottom: 100%;
     padding-bottom: 8px;
     .tooltip-arrow {
-        border-top-color: white;
+        border-top-color: @arrow-color;
         bottom: -10px;
         left: 10px;
     }
@@ -58,7 +61,7 @@
     bottom: 100%;
     padding-bottom: 8px;
     .tooltip-arrow {
-        border-top-color: white;
+        border-top-color: @arrow-color;
         bottom: -10px;
         right: 10px;
     }
@@ -71,7 +74,7 @@
     transform: translateY(-50%);
     padding-left: 8px;
     .tooltip-arrow {
-        border-right-color: white;
+        border-right-color: @arrow-color;
         left: -10px;
         top: ~"calc(50% - 5px)";
     }
@@ -81,7 +84,7 @@
     left: 100%;
     padding-left: 8px;
     .tooltip-arrow {
-        border-right-color: white;
+        border-right-color: @arrow-color;
         left: -10px;
         top: 10px;
     }
@@ -91,7 +94,7 @@
     left: 100%;
     padding-left: 8px;
     .tooltip-arrow {
-        border-right-color: white;
+        border-right-color: @arrow-color;
         left: -10px;
         bottom: 10px;
     }
@@ -104,7 +107,7 @@
     transform: translateX(-50%);
     padding-top: 8px;
     .tooltip-arrow {
-        border-bottom-color: white;
+        border-bottom-color: @arrow-color;
         top: -10px;
         left: ~"calc(50% - 5px)";
     }
@@ -114,7 +117,7 @@
     left: 0;
     padding-top: 8px;
     .tooltip-arrow {
-        border-bottom-color: white;
+        border-bottom-color: @arrow-color;
         top: -10px;
         left: 10px;
     }
@@ -124,7 +127,7 @@
     right: 0;
     padding-top: 8px;
     .tooltip-arrow {
-        border-bottom-color: white;
+        border-bottom-color: @arrow-color;
         top: -10px;
         right: 10px;
     }
@@ -137,7 +140,7 @@
     transform: translateY(-50%);
     padding-right: 8px;
     .tooltip-arrow {
-        border-left-color: white;
+        border-left-color: @arrow-color;
         right: -10px;
         top: ~"calc(50% - 5px)";
     }
@@ -147,7 +150,7 @@
     right: 100%;
     padding-right: 8px;
     .tooltip-arrow {
-        border-left-color: white;
+        border-left-color: @arrow-color;
         right: -10px;
         top: 10px;
     }
@@ -157,7 +160,7 @@
     right: 100%;
     padding-right: 8px;
     .tooltip-arrow {
-        border-left-color: white;
+        border-left-color: @arrow-color;
         right: -10px;
         bottom: 10px;
     }

@@ -79,7 +79,7 @@
       [trigger]="tooltip.trigger"
       [position]="tooltip.position"
       [arrow]="tooltip.arrow"
-      [closeByClickOutside]="tooltip.closeByClickOutside">
+      [closeByClickOutside]="tooltip.closeByClickOutside" class="red-border">
       <button tooltipTrigger>Lorem</button>
       <div tooltipBody style="width: 200px">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
     </t-tooltip>
@@ -107,5 +107,16 @@
       <div tooltipBody style="width: 200px">Proin mauris ante, interdum sed odio eget, tincidunt auctor justo.</div>
     </t-tooltip> 
     risus quam, sagittis a imperdiet sit amet, fermentum in ipsum. Nam et imperdiet magna, et molestie mauris. Vestibulum viverra iaculis ex in lobortis. Ut congue odio eros, nec convallis dolor faucibus et. Aliquam massa dui, gravida non mauris ut, pharetra mattis nulla. Donec tempus mattis magna, ut sagittis metus ornare rhoncus. Aliquam imperdiet molestie sapien, vel pulvinar lectus viverra quis.
+  </div>
+
+  <div style="padding-top: 100px; text-align: center;">
+    <t-tooltip
+      [trigger]="tooltip.trigger"
+      [position]="tooltip.position"
+      [arrow]="tooltip.arrow"
+      [closeByClickOutside]="tooltip.closeByClickOutside">
+      <input tooltipTrigger placeholder="Enter MAC address">
+      <div tooltipBody style="width: 200px">Media Access Control address</div>
+    </t-tooltip>
   </div>
 </section>
