@@ -1,4 +1,4 @@
-import { Component, Input, HostListener, ElementRef } from '@angular/core';
+import { Component, Input, HostListener, ElementRef, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 't-tooltip',
@@ -18,6 +18,9 @@ export class TooltipComponent {
   
   @Input() arrow = true;
   @Input() closeByClickOutside = true;
+
+  @Output() show = new EventEmitter();
+  @Output() hide = new EventEmitter();
 
   visible = false;
 
@@ -63,6 +66,11 @@ export class TooltipComponent {
 
   changeVisibility(visible: boolean): void {
     this.visible = visible;
+    if (visible) {
+      this.show.emit();
+    } else {
+      this.hide.emit();
+    }
   }
 
 }
