@@ -4,7 +4,7 @@
 
 <div class="tooltip-content" [ngClass]="getContentClasses()">
   <div class="tooltip-body">
-    <div class="tooltip-arrow"></div>
+    <div *ngIf="arrow" class="tooltip-arrow"></div>
     <ng-content select="[tooltipBody]"></ng-content>
   </div>
 </div>

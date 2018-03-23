@@ -62,6 +62,11 @@
   </label>
   <br>
   <label>
+    <input type="checkbox" [(ngModel)]="tooltip.arrow">
+    arrow
+  </label>
+  <br>
+  <label>
     <input type="checkbox" [(ngModel)]="tooltip.closeByClickOutside" 
       [disabled]="tooltip.trigger !== 'click'">
     close by click outside
@@ -73,6 +78,7 @@
     <t-tooltip
       [trigger]="tooltip.trigger"
       [position]="tooltip.position"
+      [arrow]="tooltip.arrow"
       [closeByClickOutside]="tooltip.closeByClickOutside">
       <button tooltipTrigger>Lorem</button>
       <div tooltipBody style="width: 200px">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
@@ -83,6 +89,7 @@
     <t-tooltip
       [trigger]="tooltip.trigger"
       [position]="tooltip.position"
+      [arrow]="tooltip.arrow"
       [closeByClickOutside]="tooltip.closeByClickOutside">
       <a tooltipTrigger>Lorem ipsum dolor sit amet</a>
       <i tooltipBody>Lorem ipsum</i>
@@ -94,6 +101,7 @@
     <t-tooltip
       [trigger]="tooltip.trigger"
       [position]="tooltip.position"
+      [arrow]="tooltip.arrow"
       [closeByClickOutside]="tooltip.closeByClickOutside">
       <mark tooltipTrigger style="cursor: pointer">Nulla</mark>
       <div tooltipBody style="width: 200px">Proin mauris ante, interdum sed odio eget, tincidunt auctor justo.</div>

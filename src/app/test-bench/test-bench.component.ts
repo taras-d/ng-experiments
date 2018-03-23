@@ -20,6 +20,7 @@ export class TestBenchComponent implements OnInit {
   tooltip = {
     trigger: 'click',
     position: 'bottom',
+    arrow: true,
     closeByClickOutside: true
   };
 

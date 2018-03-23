@@ -16,6 +16,7 @@ export class TooltipComponent {
     'right' | 'right-top' | 'right-bottom'
   ) = 'bottom';
   
+  @Input() arrow = true;
   @Input() closeByClickOutside = true;
 
   visible = false;
