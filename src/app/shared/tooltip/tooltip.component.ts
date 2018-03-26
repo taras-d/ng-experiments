@@ -15,6 +15,8 @@ export class TooltipComponent {
     'bottom' | 'bottom-left' | 'bottom-right' |
     'right' | 'right-top' | 'right-bottom'
   ) = 'bottom';
+
+  @Input() animation: 'fade' | 'slide' = null;
   
   @Input() arrow = true;
   @Input() closeByClickOutside = true;
@@ -59,6 +61,10 @@ export class TooltipComponent {
 
     if (this.position) {
       classes[this.position] = true;
+    }
+
+    if (this.animation) {
+      classes[this.animation] = true;
     }
     
     return classes;
