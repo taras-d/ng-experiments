@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 
 const notEmpty = control => {
-  return /^\s*$/.test(control.value)? { notEmpty: true }: null;
-}
+  return /^\s*$/.test(control.value) ? { notEmpty: true } : null;
+};
 
 @Component({
   selector: 't-reactive-forms-demo',
@@ -65,7 +65,7 @@ export class ReactiveFormsDemoComponent {
       } else {
         discount.enable();
       }
-    }
+    };
 
     enableDiscount();
     card.controls['type'].valueChanges.subscribe(enableDiscount);

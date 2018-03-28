@@ -17,7 +17,7 @@ export class TooltipComponent {
   ) = 'bottom';
 
   @Input() animation: 'fade' | 'slide' = null;
-  
+
   @Input() arrow = true;
   @Input() closeByClickOutside = true;
 
@@ -49,7 +49,7 @@ export class TooltipComponent {
     if (
       this.visible &&
       this.trigger === 'click' &&
-      this.closeByClickOutside && 
+      this.closeByClickOutside &&
       (event.target as HTMLElement).closest('t-tooltip') !== this.el.nativeElement
     ) {
       this.changeVisibility(false);
@@ -66,7 +66,7 @@ export class TooltipComponent {
     if (this.animation) {
       classes[this.animation] = true;
     }
-    
+
     return classes;
   }
 

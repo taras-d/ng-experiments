@@ -29,7 +29,7 @@ export class TestBenchComponent implements OnInit {
     block: true
   };
 
-  constructor(private activatedRoute: ActivatedRoute) { 
+  constructor(private activatedRoute: ActivatedRoute) {
 
   }
 

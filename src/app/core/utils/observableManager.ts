@@ -11,7 +11,7 @@ export class ObservableManager {
         create: (...args: any[]) => Observable<any>;
         next?: (data: any, ...args: any[]) => void;
         error?: (error: any, ...args: any[]) => void;
-        complete?: (args: any[]) => void; 
+        complete?: (args: any[]) => void;
       }
     },
     private options?: {
