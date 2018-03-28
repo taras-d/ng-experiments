@@ -1,33 +1,29 @@
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
-export interface ObserverConfig {
-  create: (...args: any[]) => Observable<any>;
-  next?: (data: any, ...args: any[]) => void;
-  error?: (error: any, ...args: any[]) => void;
-  complete?: (args: any[]) => void;
-}
-
-export interface ObserversConfig {
-  [key: string]: ObserverConfig;
-}
-
-export interface ObservableManagerOptions {
-  next?: (name: string, data: any, ...args: any[]) => void;
-  error?: (name: string, error: any, ...args: any[]) => void;
-  complete?: (name: string, ...args: any[]) => void;
-}
-
 export class ObservableManager {
 
   private subs: Subscription[] = [];
 
   constructor(
-      private config: ObserversConfig, 
-      private options?: ObservableManagerOptions
-  ) {}
+    private config: {
+      [key: string]: {
+        create: (...args: any[]) => Observable<any>;
+        next?: (data: any, ...args: any[]) => void;
+        error?: (error: any, ...args: any[]) => void;
+        complete?: (args: any[]) => void; 
+      }
+    },
+    private options?: {
+      next?: (name: string, data: any, ...args: any[]) => void;
+      error?: (name: string, error: any, ...args: any[]) => void;
+      complete?: (name: string, ...args: any[]) => void;
+    }
+  ) {
 
-  exec(name: string, ...args: any[]): void {
+  }
+
+  invoke(name: string, ...args: any[]): void {
     const config = this.config[name];
 
     if (!config) {
