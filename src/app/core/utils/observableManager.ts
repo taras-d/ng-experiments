@@ -6,7 +6,7 @@ export class ObservableManager {
   private subs: Subscription[] = [];
 
   constructor(
-    private config: {
+    private observers: {
       [key: string]: {
         create: (...args: any[]) => Observable<any>;
         next?: (data: any, ...args: any[]) => void;
@@ -24,9 +24,9 @@ export class ObservableManager {
   }
 
   invoke(name: string, ...args: any[]): void {
-    const config = this.config[name];
+    const observer = this.observers[name];
 
-    if (!config) {
+    if (!observer) {
       console.warn(`Observer with name "${name}" not found`);
       return;
     }
@@ -35,17 +35,17 @@ export class ObservableManager {
 
     const options = this.options || {};
 
-    this.subs[name] = config.create(...args).subscribe(
+    this.subs[name] = observer.create(...args).subscribe(
       data => {
-        this.callFn(config.next, data, ...args);
+        this.callFn(observer.next, data, ...args);
         this.callFn(options.next, name, data, ...args);
       },
       error => {
-        this.callFn(config.error, error, ...args);
+        this.callFn(observer.error, error, ...args);
         this.callFn(options.error, name, error, ...args);
       },
       () => {
-        this.callFn(config.complete, ...args);
+        this.callFn(observer.complete, ...args);
         this.callFn(options.complete, name, ...args);
       }
     );
@@ -58,7 +58,7 @@ export class ObservableManager {
   }
 
   unsubAll(): void {
-    Object.keys(this.config).forEach(name => this.unsub(name));
+    Object.keys(this.observers).forEach(name => this.unsub(name));
   }
 
   private callFn(fn: Function, ...args: any[]): any {
