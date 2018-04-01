@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsDemoModule } from './reactive-forms-demo/reactive-forms-demo.module';
 import { DynamicComponentsDemoModule } from './dynamic-components-demo/dynamic-components-demo.module';
+import { AnimationsDemoModule } from './animations-demo/animations-demo.module';
 import { TestBenchModule } from './test-bench/test-bench.module';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { TestBenchModule } from './test-bench/test-bench.module';
     CoreModule,
     ReactiveFormsDemoModule,
     DynamicComponentsDemoModule,
+    AnimationsDemoModule,
     TestBenchModule,
     AppRoutingModule
   ],
