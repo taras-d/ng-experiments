@@ -1,5 +1,18 @@
+<header>Show/hide icon</header>
 <label>
   <input type="checkbox" [(ngModel)]="showIcon"> show icon
 </label>
-<br><br>
+<br>
 <img *ngIf="showIcon" @showIcon src="favicon.ico">
+
+<br><br>
+
+<header>List animation</header>
+<ul class="fruits">
+  <li *ngFor="let item of items; let i = index; trackBy: trackBy" @listItem (click)="onItemClick(i)">
+    {{item.name}}
+  </li>
+</ul>
+<div class="add-fruit">
+  <a (click)="onItemAdd()">Add fruit</a>
+</div>
