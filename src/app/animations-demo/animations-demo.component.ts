@@ -25,10 +25,10 @@ let ID = 1;
     trigger('listItem', [
       transition(':enter', [
         style({ transform: 'translateX(-100%)' }),
-        animate(200, style({ transform: 'translateX(0)' }))
+        animate(300, style({ transform: 'translateX(0)' }))
       ]),
       transition(':leave', [
-        animate(200, style({ transform: 'translateX(100%)' }))
+        animate(300, style({ transform: 'translateX(100%)' }))
       ])
     ])
   ]
@@ -40,7 +40,7 @@ export class AnimationsDemoComponent implements OnInit {
   items = [];
 
   ngOnInit(): void {
-    Observable.interval(300).take(5)
+    Observable.interval(300).take(3)
       .subscribe(() => this.onItemAdd());
   }
 
@@ -55,7 +55,7 @@ export class AnimationsDemoComponent implements OnInit {
     this.items.splice(index, 1);
   }
 
-  trackBy(index: number, item: any): void {
+  listTrackBy(index: number, item: any): void {
     return item.id;
   }
 

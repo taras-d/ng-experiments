@@ -13,7 +13,7 @@ ng serve
 - [Loader](src/app/shared/loader)
 
 ## To do
-- animations
+- ~~animations~~
 - template outlet
 - ~~dynamic components~~
 - ~~reactive forms~~
