@@ -89,9 +89,12 @@
       [position]="tooltip.position"
       [animation]="tooltip.animation"
       [arrow]="tooltip.arrow"
-      [closeByClickOutside]="tooltip.closeByClickOutside">
+      [closeByClickOutside]="tooltip.closeByClickOutside" #t>
       <button tooltipTrigger>Lorem</button>
-      <div tooltipBody style="width: 200px">Lorem ipsum <b>dolor</b> sit amet, consectetur adipiscing elit</div>
+      <div tooltipBody style="width: 220px">
+        Lorem ipsum <b>dolor</b> sit amet, consectetur adipiscing elit
+        <a style="color: red; text-decoration: underline;" (click)="t.close()">[close]</a>
+      </div>
     </t-tooltip>
   </div>
 

@@ -79,4 +79,12 @@ export class TooltipComponent {
     }
   }
 
+  open(): void {
+    this.changeVisibility(true);
+  }
+
+  close(): void {
+    this.changeVisibility(false);
+  }
+
 }
