@@ -11,7 +11,7 @@ export class ModalComponent {
   @Input() closeIcon = true;
   @Input() closeByOverlay = true;
   @Input() closeByEsc = true;
-  @Input() maxWidth = '500px';
+  @Input() contentStyles = null;
   @Input() header = '';
 
   @Output() visibleChange = new EventEmitter();
