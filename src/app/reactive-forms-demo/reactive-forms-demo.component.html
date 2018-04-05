@@ -1,5 +1,6 @@
 <section>
-  <header>Simple form</header>
+  <header class="section-header">Simple form</header>
+
   <form [formGroup]="userForm" (ngSubmit)="onUserFormSubmit()">
     <fieldset>
       <label>Name</label>
@@ -42,7 +43,8 @@
 </section>
 
 <section>
-  <header>Array form</header>
+  <header class="section-header">Array form</header>
+
   <form [formGroup]="cardsForm" (ngSubmit)="onCardFormSubmit()">
     <table *ngIf="cardsForm.length">
       <thead>

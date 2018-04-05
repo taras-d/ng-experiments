@@ -1,22 +1,25 @@
+<!-- Preload icon -->
 <img style="display: none" src="favicon.ico">
 
-<header>Show/hide icon</header>
-<label>
-  <input type="checkbox" [(ngModel)]="showIcon"> show icon
-</label>
-<br>
-<img *ngIf="showIcon" @showIcon src="favicon.ico">
+<section>
+  <header class="section-header">Show/hide icon</header>
+  <label>
+    <input type="checkbox" [(ngModel)]="showIcon"> show icon
+  </label>
+  <br>
+  <img *ngIf="showIcon" @showIcon src="favicon.ico">
+</section>
 
-<br><br>
-
-<header>List animation</header>
-<ul class="fruits">
-  <li *ngFor="let item of items; let i = index; trackBy: listTrackBy" 
-    @listItem 
-    (click)="onItemClick(i)">
-    {{item.name}}
-  </li>
-</ul>
-<div class="add-fruit">
-  <a (click)="onItemAdd()">+ add fruit</a>
-</div>
+<section>
+  <header class="section-header">List animation</header>
+  <ul class="fruits">
+    <li *ngFor="let item of items; let i = index; trackBy: listTrackBy" 
+      @listItem 
+      (click)="onItemClick(i)">
+      {{item.name}}
+    </li>
+  </ul>
+  <div class="add-fruit">
+    <a (click)="onItemAdd()">+ add fruit</a>
+  </div>
+</section>

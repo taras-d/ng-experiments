@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsDemoModule } from './reactive-forms-demo/reactive-forms-demo.module';
 import { DynamicComponentsDemoModule } from './dynamic-components-demo/dynamic-components-demo.module';
 import { AnimationsDemoModule } from './animations-demo/animations-demo.module';
+import { TemplateOutletDemoModule } from './template-outlet-demo/template-outlet-demo.module';
 import { TestBenchModule } from './test-bench/test-bench.module';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { TestBenchModule } from './test-bench/test-bench.module';
     ReactiveFormsDemoModule,
     DynamicComponentsDemoModule,
     AnimationsDemoModule,
+    TemplateOutletDemoModule,
     TestBenchModule,
     AppRoutingModule
   ],

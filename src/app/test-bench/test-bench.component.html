@@ -1,6 +1,6 @@
 <!-- Modal -->
 <section *ngIf="name === 'modal'">
-  <header>Modal</header>
+  <header class="section-header">Modal</header>
 
   <label>
     <input type="checkbox" [(ngModel)]="modal.visible"> show
@@ -30,7 +30,7 @@
 
 <!-- Tooltip -->
 <section *ngIf="name === 'tooltip'">
-  <header>Tooltip</header>
+  <header class="section-header">Tooltip</header>
 
   <label>
     trigger:
@@ -139,7 +139,7 @@
 
 <!-- Loader -->
 <section *ngIf="name === 'loader'">
-  <header>Loader</header>
+  <header class="section-header">Loader</header>
   <t-loader></t-loader>
 
   <br>
