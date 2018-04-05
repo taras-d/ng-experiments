@@ -1,3 +1,40 @@
 <section>
   <header class="section-header">Template outlet</header>
+
+  <label>
+    <input type="radio" name="name" checked (click)="template = null"> Default template
+  </label>
+  <br>
+  <label>
+    <input type="radio" name="name" (click)="template = customTpl1"> Custom template 1
+  </label>
+  <br>
+  <label>
+    <input type="radio" name="name" (click)="template = customTpl2"> Custom template 2
+  </label>
+
+  <br>
+  <br>
+
+  <ng-template #customTpl1>
+    <div class="tpl-1">
+      <div>{{user.firstName}}</div>
+      <img [src]="user.image">
+      <div>{{user.lastName}}</div>
+    </div>
+  </ng-template>
+
+  <ng-template #customTpl2>
+    <div class="tpl-2">
+      <span>{{user.firstName}}</span>
+      <img [src]="user.image">
+      <span>{{user.lastName}}</span>
+      <div>Age: {{user.age}}</div>
+    </div>
+  </ng-template>
+
+  <t-user-details
+    [user]="user"
+    [template]="template">
+  </t-user-details>
 </section>

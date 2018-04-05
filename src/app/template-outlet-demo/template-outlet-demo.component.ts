@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 't-template-outlet-demo',
   templateUrl: './template-outlet-demo.component.html',
   styleUrls: ['./template-outlet-demo.component.less']
 })
-export class TemplateOutletDemoComponent implements OnInit {
+export class TemplateOutletDemoComponent {
 
-  constructor() { }
+  user = {
+    image: 'assets/user.png',
+    firstName: 'John',
+    lastName: 'Doe',
+    age: 27
+  };
 
-  ngOnInit() {
-  }
+  template: TemplateRef<any>;
 
 }

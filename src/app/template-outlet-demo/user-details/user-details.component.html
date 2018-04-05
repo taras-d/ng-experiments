@@ -1,0 +1,8 @@
+<ng-template #defaultTemplate>
+  <div class="user">
+    <img [src]="user.image">
+    <span>{{user.firstName}} {{user.lastName}}</span>
+  </div>
+</ng-template>
+
+<ng-container *ngTemplateOutlet="template || defaultTemplate"></ng-container>
