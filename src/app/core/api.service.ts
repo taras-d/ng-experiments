@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export interface ApiRequestOptions {
   params?: { [key: string]: any };
@@ -11,7 +10,7 @@ export interface ApiRequestOptions {
   observe?: 'body' | 'response' | 'events';
 }
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ApiService {
 
   static readonly baseUrl = 'http://url/to/api';

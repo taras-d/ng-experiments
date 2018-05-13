@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, state, style, animate } from '@angular/animations';
-import { Observable } from 'rxjs/Observable';
+import { Observable, interval } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 const FRUITS = [
   'Apple',
@@ -40,7 +41,7 @@ export class AnimationsDemoComponent implements OnInit {
   items = [];
 
   ngOnInit(): void {
-    Observable.interval(300).take(3)
+    interval(300).pipe(take(3))
       .subscribe(() => this.onItemAdd());
   }
 

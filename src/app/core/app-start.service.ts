@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-
-import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs';
 
 import { ApiService } from './api.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AppStartService {
 
   constructor(private apiService: ApiService) {
@@ -12,7 +11,7 @@ export class AppStartService {
   }
 
   load(): Promise<any> {
-    return Observable.of(null).toPromise();
+    return of(null).toPromise();
   }
 
 }
