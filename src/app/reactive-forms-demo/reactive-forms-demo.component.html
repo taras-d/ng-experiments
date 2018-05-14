@@ -3,11 +3,11 @@
 
   <form [formGroup]="userForm" (ngSubmit)="onUserFormSubmit()">
     <fieldset>
-      <label>Name</label>
+      <label>Name: </label>
       <input type="text" formControlName="name">
     </fieldset>
     <fieldset>
-      <label>Gender:</label>
+      <label>Gender: </label>
       <label>
         male <input type="radio" formControlName="gender" value="male">
       </label>
@@ -19,11 +19,11 @@
       </label>
     </fieldset>
     <fieldset>
-      <label>Email</label>
+      <label>Email: </label>
       <input type="text" formControlName="email">
     </fieldset>
     <fieldset>
-      <label>Country</label> 
+      <label>Country: </label> 
       <select formControlName="country">
         <option *ngFor="let country of countries" [value]="country.value">
           {{country.text}}
