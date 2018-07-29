@@ -12,3 +12,4 @@ ng serve
 - [Modal](src/app/shared/modal)
 - [Tooltip](src/app/shared/tooltip)
 - [Loader](src/app/shared/loader)
+- [Checkbox](src/app/shared/checkbox)
