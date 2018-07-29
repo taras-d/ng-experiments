@@ -1,9 +1,9 @@
-<div class="modal" [class.visible]="visible">
+<div class="modal" *ngIf="visible">
 
   <div class="modal-overlay"></div>
 
   <div class="modal-viewport" (click)="onViewportClick($event)">
-    <div class="modal-content" [ngStyle]="contentStyles">
+    <div class="modal-content" [ngStyle]="contentStyle">
       <div *ngIf="header" class="modal-header">{{header}}</div>
       <div *ngIf="closeIcon" class="modal-close" (click)="onCloseClick()">x</div>
       <ng-content></ng-content>
