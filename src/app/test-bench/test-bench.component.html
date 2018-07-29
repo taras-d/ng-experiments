@@ -158,3 +158,12 @@
     <t-loader *ngIf="loader.block" class="block"></t-loader>
   </div>
 </section>
+
+<!-- Checkbox -->
+<section *ngIf="name === 'checkbox'">
+  <header class="section-header">Checkbox</header>
+
+  <t-checkbox [(ngModel)]="checkbox.value">
+    Lorem <b>ipsum</b> dolor <i>sit amet</i>
+  </t-checkbox>
+</section>

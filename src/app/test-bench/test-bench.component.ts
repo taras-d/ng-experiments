@@ -29,6 +29,10 @@ export class TestBenchComponent implements OnInit {
     block: true
   };
 
+  checkbox = {
+    value: true
+  };
+
   constructor(private activatedRoute: ActivatedRoute) {
 
   }

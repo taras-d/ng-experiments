@@ -1,0 +1,14 @@
+<label>
+  <input type="checkbox"
+    (change)="onInputChange()"
+    (blur)="onInputBlur()"
+    #input>
+  <div class="icon">
+    <svg width="16" height="16">
+      <polyline points="2,6 6,12 12,2"/>
+    </svg>
+  </div>
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
+</label>

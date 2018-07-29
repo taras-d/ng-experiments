@@ -1,0 +1,37 @@
+:host {
+  display: inline-block;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    &:checked + .icon svg {
+      display: block;
+    }
+  }
+  .icon {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #00bcd4;
+    svg {
+      display: none;
+      polyline {
+        fill: none;
+        stroke: #00bcd4;
+        stroke-width: 2px;
+      }
+    }
+  }
+  .content {
+    padding-left: 6px;
+  }
+}
