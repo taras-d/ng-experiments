@@ -4,7 +4,7 @@ const exec = (fn, ...args) => fn && fn(...args);
 
 export class ObservableManager {
 
-  private subs: Subscription[] = [];
+  private subs: { [observerName: string]: Subscription } = {};
 
   constructor(
     private observers: {
@@ -59,7 +59,9 @@ export class ObservableManager {
   }
 
   unsubAll(): void {
-    Object.keys(this.observers).forEach(name => this.unsub(name));
+    Object.keys(this.subs).forEach(
+      observerName => this.unsub(observerName)
+    );
   }
 
 }
