@@ -1,69 +1,67 @@
 import { Observable, Subscription } from 'rxjs';
 
+const exec = (fn, ...args) => fn && fn(...args);
+
 export class ObservableManager {
 
-  private subs: Subscription[] = [];
+  private subs: { [observerName: string]: Subscription } = {};
 
   constructor(
     private observers: {
-      [key: string]: {
-        create: (...args: any[]) => Observable<any>;
-        next?: (data: any, ...args: any[]) => void;
-        error?: (error: any, ...args: any[]) => void;
-        complete?: (args: any[]) => void;
+      [observerName: string]: {
+        create: (...createArgs: any[]) => Observable<any>;
+        next?: (value: any, ...createArgs: any[]) => void;
+        error?: (error: any, ...createArgs: any[]) => void;
+        complete?: (...createArgs: any[]) => void;
       }
     },
     private options?: {
-      next?: (name: string, data: any, ...args: any[]) => void;
-      error?: (name: string, error: any, ...args: any[]) => void;
-      complete?: (name: string, ...args: any[]) => void;
+      next?: (observerName: string, value: any, ...createArgs: any[]) => void;
+      error?: (observerName: string, error: any, ...createArgs: any[]) => void;
+      complete?: (observerName: string, ...createArgs: any[]) => void;
     }
   ) {
 
   }
 
-  invoke(name: string, ...args: any[]): void {
-    const observer = this.observers[name];
+  invoke(observerName: string, ...createArgs: any[]): void {
+    const observer = this.observers[observerName];
 
     if (!observer) {
-      console.warn(`Observer with name "${name}" not found`);
+      console.warn(`Observer with name "${observerName}" not found`);
       return;
     }
 
-    this.unsub(name);
+    this.unsub(observerName);
 
     const options = this.options || {};
 
-    this.subs[name] = observer.create(...args).subscribe(
-      data => {
-        this.callFn(observer.next, data, ...args);
-        this.callFn(options.next, name, data, ...args);
+    this.subs[observerName] = observer.create(...createArgs).subscribe(
+      value => {
+        exec(observer.next, value, ...createArgs);
+        exec(options.next, observerName, value, ...createArgs);
       },
       error => {
-        this.callFn(observer.error, error, ...args);
-        this.callFn(options.error, name, error, ...args);
+        exec(observer.error, error, ...createArgs);
+        exec(options.error, observerName, error, ...createArgs);
       },
       () => {
-        this.callFn(observer.complete, ...args);
-        this.callFn(options.complete, name, ...args);
+        exec(observer.complete, ...createArgs);
+        exec(options.complete, observerName, ...createArgs);
       }
     );
   }
 
-  unsub(name: string): void {
-    if (name in this.subs) {
-      this.subs[name].unsubscribe();
+  unsub(observerName: string): void {
+    if (observerName in this.subs) {
+      this.subs[observerName].unsubscribe();
     }
   }
 
   unsubAll(): void {
-    Object.keys(this.observers).forEach(name => this.unsub(name));
-  }
-
-  private callFn(fn: Function, ...args: any[]): any {
-    if (typeof fn === 'function') {
-      return fn(...args);
-    }
+    Object.keys(this.subs).forEach(
+      observerName => this.unsub(observerName)
+    );
   }
 
 }
