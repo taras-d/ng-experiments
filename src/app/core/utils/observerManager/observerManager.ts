@@ -16,6 +16,7 @@ export class ObserverManager {
       }
     },
     private options?: {
+      create?: (observerName, ...createArgs: any[]) => void;
       next?: (observerName: string, value: any, ...createArgs: any[]) => void;
       error?: (observerName: string, error: any, ...createArgs: any[]) => void;
       complete?: (observerName: string, ...createArgs: any[]) => void;
@@ -50,6 +51,8 @@ export class ObserverManager {
         exec(options.complete, observerName, ...createArgs);
       }
     );
+
+    exec(options.create, observerName, ...createArgs);
   }
 
   unsub(observerName: string): void {
