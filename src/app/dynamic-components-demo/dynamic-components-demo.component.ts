@@ -1,9 +1,11 @@
 import { Component, ViewChild, ComponentFactoryResolver, AfterViewInit } from '@angular/core';
 
-import { HolderDirective } from './holder/holder.directive';
-import { RectComponent } from './rect/rect.component';
-import { CircleComponent } from './circle/circle.component';
-import { SquareComponent } from './square/square.component';
+import { 
+  DynamicCircleComponent,
+  DynamicSquareComponent,
+  DynamicRectComponent,
+  HolderDirective
+} from './dynamic-components'
 
 @Component({
   selector: 't-dynamic-components-demo',
@@ -26,9 +28,9 @@ export class DynamicComponentsDemoComponent implements AfterViewInit {
 
   add(name: string): void {
     const map = {
-      circle: CircleComponent,
-      rect: RectComponent,
-      square: SquareComponent
+      circle: DynamicCircleComponent,
+      rect: DynamicRectComponent,
+      square: DynamicSquareComponent
     };
 
     const factory = this.cmpFactoryResolver.resolveComponentFactory(map[name]);
