@@ -1,7 +1,7 @@
 import { of, throwError } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
-import { ObserverManager } from "./observerManager";
+import { ObserverManager } from './observerManager';
 
 describe('ObserverManager', () => {
 
@@ -126,5 +126,5 @@ describe('ObserverManager', () => {
     om.unsubAll();
     expect(sub.closed).toBeTruthy();
   });
-  
+
 });
