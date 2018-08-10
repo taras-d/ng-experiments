@@ -1,3 +1,23 @@
-<p>
-  multiple-outlets-demo works!
-</p>
+<section class="frame">
+  <header class="section-header">First outlet</header>
+
+  <a [routerLink]="[{ outlets: { first: 'users' } }]" routerLinkActive="active">users</a>
+  <a [routerLink]="[{ outlets: { first: 'roles' } }]" routerLinkActive="active">roles</a>
+  <a [routerLink]="[{ outlets: { first: 'profiles' } }]" routerLinkActive="active">profiles</a>
+
+  <router-outlet name="first" #first="outlet"></router-outlet>
+
+  <p *ngIf="!first.isActivated" class="not-activated">select section</p>
+</section>
+
+<section class="frame">
+  <header class="section-header">Second outlet</header>
+
+  <a [routerLink]="[{ outlets: { second: 'users' } }]" routerLinkActive="active">users</a>
+  <a [routerLink]="[{ outlets: { second: 'roles' } }]" routerLinkActive="active">roles</a>
+  <a [routerLink]="[{ outlets: { second: 'profiles' } }]" routerLinkActive="active">profiles</a>
+  
+  <router-outlet name="second" #second="outlet"></router-outlet>
+
+  <p *ngIf="!second.isActivated" class="not-activated">select section</p>
+</section>
