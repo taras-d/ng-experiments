@@ -1,3 +1,5 @@
+@import 'variables';
+
 :host {
   display: inline-block;
 }
@@ -21,12 +23,12 @@ label {
     flex-shrink: 0;
     width: 16px;
     height: 16px;
-    border: 1px solid #00bcd4;
+    border: 1px solid @theme-color;
     svg {
       display: none;
       polyline {
         fill: none;
-        stroke: #00bcd4;
+        stroke: @theme-color;
         stroke-width: 2px;
       }
     }

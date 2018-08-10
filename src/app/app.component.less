@@ -1,3 +1,5 @@
+@import 'variables';
+
 :host {
   display: block;
   position: relative;
@@ -5,13 +7,12 @@
 }
 
 aside {
-  @color: #00bcd4;
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 180px;
-  border-right: 1px solid @color;
+  border-right: 1px solid @theme-color;
   overflow-x: hidden;
   overflow-y: auto;
   ul {
@@ -29,7 +30,7 @@ aside {
       }
       &.active {
         opacity: 1;
-        background-color: @color;
+        background-color: @theme-color;
         color: white;
       }
     }

@@ -23,6 +23,11 @@
             "styles": [
               "src/styles/styles.less"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
