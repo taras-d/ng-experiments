@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { MultipleOutletsDemoComponent } from './multiple-outlets-demo.component';
-import { 
+import {
   MultipleOutletsUsersComponent, MultipleOutletsRolesComponent, MultipleOutletsProfilesComponent
 } from './multiple-outlets-components';
 

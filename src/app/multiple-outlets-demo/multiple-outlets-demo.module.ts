@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MultipleOutletsDemoRoutingModule } from './multiple-outlets-demo-routing.module';
 import { MultipleOutletsDemoComponent } from './multiple-outlets-demo.component';
-import { 
+import {
   MultipleOutletsUsersComponent, MultipleOutletsRolesComponent, MultipleOutletsProfilesComponent
 } from './multiple-outlets-components';
 
@@ -14,8 +14,8 @@ import {
   ],
   declarations: [
     MultipleOutletsDemoComponent,
-    MultipleOutletsUsersComponent, 
-    MultipleOutletsRolesComponent, 
+    MultipleOutletsUsersComponent,
+    MultipleOutletsRolesComponent,
     MultipleOutletsProfilesComponent
   ]
 })

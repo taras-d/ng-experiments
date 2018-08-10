@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { DynamicComponentsDemoRoutingModule } from './dynamic-components-demo-routing.module';
 import { DynamicComponentsDemoComponent } from './dynamic-components-demo.component';
-import { 
+import {
   DynamicCircleComponent,
   DynamicSquareComponent,
   DynamicRectComponent,
   HolderDirective
-} from './dynamic-components'
+} from './dynamic-components';
 
 @NgModule({
   imports: [

@@ -1,11 +1,11 @@
 import { Component, ViewChild, ComponentFactoryResolver, AfterViewInit } from '@angular/core';
 
-import { 
+import {
   DynamicCircleComponent,
   DynamicSquareComponent,
   DynamicRectComponent,
   HolderDirective
-} from './dynamic-components'
+} from './dynamic-components';
 
 @Component({
   selector: 't-dynamic-components-demo',
