@@ -1,8 +1,8 @@
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, of } from 'rxjs';
 
 const exec = (fn, ...args) => fn && fn(...args);
 
-export class ObservableManager {
+export class ObserverManager {
 
   private subs: { [observerName: string]: Subscription } = {};
 
