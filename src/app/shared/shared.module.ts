@@ -36,7 +36,7 @@ import { LoremIpsumPipe } from './pipes/lorem-ipsum.pipe';
     LoaderComponent,
     CheckboxComponent,
     ContentExpanderComponent,
-    
+
     LoremIpsumPipe
   ]
 })
