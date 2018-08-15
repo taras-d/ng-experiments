@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { ModalComponent } from './modal/modal.component';
-import { TooltipComponent } from './tooltip/tooltip.component';
-import { LoaderComponent } from './loader/loader.component';
-import { CheckboxComponent } from './checkbox/checkbox.component';
-import { LayoutComponent } from './layout/layout.component';
-import { ContentExpanderComponent } from './content-expander/content-expander.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { TooltipComponent } from './components/tooltip/tooltip.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { ContentExpanderComponent } from './components/content-expander/content-expander.component';
 
 @NgModule({
   imports: [
