@@ -1,0 +1,14 @@
+<div class="wrap"
+  [class.expand]="expand"
+  [style.max-height]="height"
+  #wrap>
+  <div class="content" #content>
+    <ng-content></ng-content>
+  </div>
+  <div *ngIf="overflow && !expand" class="shadow"></div>
+</div>
+
+<div *ngIf="overflow" class="controls">
+  <a *ngIf="!expand" (click)="expand = true">&dArr; show more</a>
+  <a *ngIf="expand" (click)="expand = false">&uArr; show less</a>
+</div>

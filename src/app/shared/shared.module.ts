@@ -7,6 +7,7 @@ import { TooltipComponent } from './tooltip/tooltip.component';
 import { LoaderComponent } from './loader/loader.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { LayoutComponent } from './layout/layout.component';
+import { ContentExpanderComponent } from './content-expander/content-expander.component';
 
 @NgModule({
   imports: [
@@ -21,14 +22,16 @@ import { LayoutComponent } from './layout/layout.component';
     ModalComponent,
     TooltipComponent,
     LoaderComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    ContentExpanderComponent
   ],
   declarations: [
     LayoutComponent,
     ModalComponent,
     TooltipComponent,
     LoaderComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    ContentExpanderComponent
   ]
 })
 export class SharedModule { }
