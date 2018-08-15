@@ -149,12 +149,7 @@
     <input type="checkbox" [(ngModel)]="loader.block"> block loader
   </label>
   <div style="padding: 5px; border: 1px dotted silver; position: relative">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a enim placerat, luctus lorem vel, suscipit lorem. Sed volutpat, risus vestibulum elementum euismod, lacus sem accumsan eros, id sodales nunc risus ut mauris. Integer et gravida ligula. Aliquam nec commodo elit.
-    </p>
-    <p>
-      Nam eget risus ante. Etiam ut lorem eu est convallis congue at vel risus. Duis tortor mauris, fermentum eleifend est sed, molestie pretium turpis. Pellentesque nisl orci, malesuada semper finibus vel, euismod a dui. Integer eget eros mollis, laoreet nisl in, commodo nulla.
-    </p>
+    <div [innerHTML]="''|loremIpsum:0:2"></div>
     <t-loader *ngIf="loader.block" class="block"></t-loader>
   </div>
 </section>
@@ -173,11 +168,10 @@
   <header class="section-header">Content expander</header>
 
   <t-content-expander>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac nibh varius, auctor magna lobortis, pretium tellus. Suspendisse consectetur facilisis quam, vitae tempor metus suscipit at. Aliquam erat volutpat. Quisque nisi lectus, ultricies vitae tincidunt id, tincidunt hendrerit purus. Fusce convallis luctus fringilla. Duis laoreet eleifend erat, ac mattis ante egestas non. Donec at nunc in ipsum tristique lobortis ac in elit.
-    </p>
-    <p>
-      Duis a dignissim purus. Morbi elit ligula, tincidunt a urna mollis, pharetra malesuada magna. Cras aliquam augue a dolor aliquet, at sollicitudin nulla malesuada. Etiam tempus enim ac aliquam semper. Suspendisse imperdiet sit amet sapien ut varius. Phasellus porttitor, erat id eleifend efficitur, velit turpis vestibulum ligula, quis dignissim urna eros finibus enim. Nunc pharetra diam vitae risus convallis, a condimentum felis euismod. Nulla nec accumsan eros, id vulputate nunc. Nam id augue sodales sapien lobortis feugiat. Donec leo urna, lobortis at erat non, aliquam luctus magna. Fusce sagittis hendrerit arcu, at dictum turpis aliquam et. Pellentesque pulvinar turpis vel ligula porttitor, a scelerisque urna blandit. Integer aliquet orci non massa efficitur tincidunt eu et urna.
-    </p>
+    <div [innerHTML]="''|loremIpsum:0:2"></div>
+  </t-content-expander>
+
+  <t-content-expander>
+    <div [innerHTML]="''|loremIpsum:2:5"></div>
   </t-content-expander>
 </section>

@@ -9,6 +9,8 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { ContentExpanderComponent } from './components/content-expander/content-expander.component';
 
+import { LoremIpsumPipe } from './pipes/lorem-ipsum.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -23,7 +25,9 @@ import { ContentExpanderComponent } from './components/content-expander/content-
     TooltipComponent,
     LoaderComponent,
     CheckboxComponent,
-    ContentExpanderComponent
+    ContentExpanderComponent,
+
+    LoremIpsumPipe
   ],
   declarations: [
     LayoutComponent,
@@ -31,7 +35,9 @@ import { ContentExpanderComponent } from './components/content-expander/content-
     TooltipComponent,
     LoaderComponent,
     CheckboxComponent,
-    ContentExpanderComponent
+    ContentExpanderComponent,
+    
+    LoremIpsumPipe
   ]
 })
 export class SharedModule { }
