@@ -12,7 +12,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   }]
 })
 export class CheckboxComponent implements ControlValueAccessor {
-
   @ViewChild('input') inputRef: ElementRef;
 
   private onChange: any;
@@ -39,5 +38,4 @@ export class CheckboxComponent implements ControlValueAccessor {
   onInputBlur(): void {
     this.onTouched();
   }
-
 }

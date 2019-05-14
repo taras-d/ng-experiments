@@ -6,7 +6,6 @@ import { Component, Input, ViewChild, ElementRef, AfterContentInit } from '@angu
   styleUrls: ['./content-expander.component.less']
 })
 export class ContentExpanderComponent implements AfterContentInit {
-
   @ViewChild('wrap') wrapRef: ElementRef;
   @ViewChild('content') contentRef: ElementRef;
 
@@ -26,5 +25,4 @@ export class ContentExpanderComponent implements AfterContentInit {
       wrap && content && content.offsetHeight > wrap.offsetHeight
     );
   }
-
 }

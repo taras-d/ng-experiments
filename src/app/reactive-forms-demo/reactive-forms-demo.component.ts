@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 
 const notEmpty = control => {
@@ -11,24 +11,19 @@ const notEmpty = control => {
   styleUrls: ['./reactive-forms-demo.component.less']
 })
 export class ReactiveFormsDemoComponent {
-
   countries = [
     { value: '', text: '-' },
     { value: 'usa', text: 'USA' },
     { value: 'canada', text: 'Canada' },
     { value: 'ukraine', text: 'Ukraine' }
   ];
-
   cardTypes = [
     { value: 'standart', text: 'Standart' },
     { value: 'premium', text: 'Premium' },
     { value: 'platinum', text: 'Platinum' }
   ];
-
   cardId = 1;
-
   userForm: FormGroup;
-
   cardsForm: FormArray;
 
   constructor(private fb: FormBuilder) {
@@ -80,5 +75,4 @@ export class ReactiveFormsDemoComponent {
   onCardFormSubmit(): void {
     console.table(this.cardsForm.value);
   }
-
 }

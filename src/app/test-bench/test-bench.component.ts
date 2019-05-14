@@ -7,7 +7,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./test-bench.component.less']
 })
 export class TestBenchComponent implements OnInit {
-
   name: string;
 
   modal = {
@@ -42,5 +41,4 @@ export class TestBenchComponent implements OnInit {
       this.name = params.get('name');
     });
   }
-
 }

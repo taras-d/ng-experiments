@@ -6,7 +6,6 @@ import { Component, Input, Output, EventEmitter, HostListener } from '@angular/c
   styleUrls: ['./modal.component.less']
 })
 export class ModalComponent {
-
   @Input() visible = false;
   @Input() closeIcon = true;
   @Input() closeByOverlay = true;
@@ -37,5 +36,4 @@ export class ModalComponent {
     this.visible = visible;
     this.visibleChange.emit(visible);
   }
-
 }

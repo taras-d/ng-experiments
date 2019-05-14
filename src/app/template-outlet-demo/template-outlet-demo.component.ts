@@ -6,14 +6,11 @@ import { Component, TemplateRef } from '@angular/core';
   styleUrls: ['./template-outlet-demo.component.less']
 })
 export class TemplateOutletDemoComponent {
-
   user = {
     image: 'assets/user.png',
     firstName: 'John',
     lastName: 'Doe',
     age: 27
   };
-
   template: TemplateRef<any>;
-
 }

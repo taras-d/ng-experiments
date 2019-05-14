@@ -13,7 +13,6 @@ import {
   styleUrls: ['./dynamic-components-demo.component.less']
 })
 export class DynamicComponentsDemoComponent implements AfterViewInit {
-
   @ViewChild(HolderDirective) holder: HolderDirective;
 
   constructor(private cmpFactoryResolver: ComponentFactoryResolver) {
@@ -45,5 +44,4 @@ export class DynamicComponentsDemoComponent implements AfterViewInit {
   clear(): void {
     this.holder.viewContainerRef.clear();
   }
-
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, state, style, animate } from '@angular/animations';
-import { Observable, interval } from 'rxjs';
+import { interval } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 const FRUITS = [
@@ -35,9 +35,7 @@ let ID = 1;
   ]
 })
 export class AnimationsDemoComponent implements OnInit {
-
   showIcon = false;
-
   items = [];
 
   ngOnInit(): void {
@@ -59,5 +57,4 @@ export class AnimationsDemoComponent implements OnInit {
   listTrackBy(index: number, item: any): void {
     return item.id;
   }
-
 }

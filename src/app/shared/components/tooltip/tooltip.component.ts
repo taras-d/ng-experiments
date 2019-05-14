@@ -6,7 +6,6 @@ import { Component, Input, HostListener, ElementRef, Output, EventEmitter } from
   styleUrls: ['./tooltip.component.less']
 })
 export class TooltipComponent {
-
   @Input() trigger: 'click' | 'hover' = 'click';
 
   @Input() position: (
@@ -86,5 +85,4 @@ export class TooltipComponent {
   close(): void {
     this.changeVisibility(false);
   }
-
 }

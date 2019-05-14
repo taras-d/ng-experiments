@@ -6,8 +6,6 @@ import { Component, Input, TemplateRef } from '@angular/core';
   styleUrls: ['./user-details.component.less']
 })
 export class UserDetailsComponent {
-
   @Input() user: any;
   @Input() template: TemplateRef<any>;
-
 }
